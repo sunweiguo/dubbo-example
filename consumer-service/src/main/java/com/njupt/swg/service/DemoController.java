@@ -1,7 +1,8 @@
-package com.njupt.swg.controller;
+package com.njupt.swg.service;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.njupt.swg.DemoService;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,8 +18,8 @@ public class DemoController {
     private DemoService demoService;
 
     @RequestMapping("test")
-    public String test(){
-        String res = demoService.sayHello("fossi!");
+    public String test(@PathVariable("name") String name){
+        String res = demoService.sayHello(name);
         return res;
     }
 }
